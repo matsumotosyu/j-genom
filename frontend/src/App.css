@@ -1,0 +1,197 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #0d0d0d;
+  color: #e8e8e8;
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  margin: 0;
+}
+
+.app {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 0.1em;
+}
+
+.subtitle {
+  color: #888;
+  margin: 0 0 16px;
+  font-size: 0.9rem;
+}
+
+.card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  margin: 0 0 20px;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.card h3 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Wallet */
+.wallet-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wallet-section.connected {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 8px 14px;
+}
+
+.address {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.balances {
+  display: flex;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: #6cf;
+}
+
+/* Form */
+.di-form, .register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+input, select {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #e8e8e8;
+  font-size: 1rem;
+  padding: 8px 12px;
+  font-family: inherit;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #555;
+}
+
+button {
+  background: #6cf;
+  border: none;
+  border-radius: 6px;
+  color: #000;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: opacity 0.2s;
+}
+
+button:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+button.disconnect {
+  background: #333;
+  color: #aaa;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+}
+
+/* DI Result */
+.di-result {
+  text-align: center;
+}
+
+.di-score {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #6cf;
+  line-height: 1;
+}
+
+.di-label {
+  color: #888;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 20px;
+}
+
+.breakdown {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.breakdown td {
+  padding: 5px 8px;
+  border-bottom: 1px solid #222;
+}
+
+.breakdown td:first-child {
+  color: #888;
+  width: 40%;
+}
+
+.breakdown tr.penalty td {
+  color: #f96;
+}
+
+.error {
+  color: #f66;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.success {
+  color: #6c6;
+  font-size: 0.85rem;
+  margin: 0;
+}

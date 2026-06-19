@@ -1,0 +1,21 @@
+# 環境変数（秘密鍵・APIキーを含む）
+.env
+
+# Hardhat
+artifacts/
+cache/
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+frontend/dist/
+
+# Python venv
+venv/
+.venv/
+
+# pytest
+.pytest_cache/
