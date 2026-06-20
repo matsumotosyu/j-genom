@@ -19,3 +19,6 @@ venv/
 
 # pytest
 .pytest_cache/
+
+# セッションログ
+session_log.txt
