@@ -4,6 +4,23 @@ import { parseUnits, formatUnits } from "viem";
 import { JGEM_TOKEN_ADDRESS, NFT_CONTRACT_ADDRESS, JGEM_ABI, NFT_ABI } from "./contracts";
 import "./App.css";
 
+function friendlyError(e: unknown): string {
+  const msg = e instanceof Error ? e.message : String(e);
+  if (/user rejected|user denied|rejected the request/i.test(msg))
+    return "トランザクションがキャンセルされました";
+  if (/already registered/i.test(msg))
+    return "この文字列はすでに登録されています";
+  if (/unauthorized|not the owner|onlyOwner/i.test(msg))
+    return "オーナーアカウントでのみ登録できます";
+  if (/insufficient funds/i.test(msg))
+    return "Sepolia ETH が不足しています。フォーセットから補充してください";
+  if (/failed to fetch|network/i.test(msg))
+    return "サーバーに接続できません。しばらく待ってから再度お試しください（初回起動に30秒ほどかかる場合があります）";
+  if (/execution reverted/i.test(msg))
+    return "トランザクションが失敗しました（コントラクトにより拒否されました）";
+  return "エラーが発生しました。しばらく待ってから再度お試しください";
+}
+
 const REGIONS = ["JA-JP", "EN-GB", "EN-US", "ZH-CN", "ZH-TW", "KO-KR"];
 
 interface DIResult {
@@ -88,7 +105,7 @@ function DIForm({ onResult }: { onResult: (r: DIResult) => void }) {
       const data: DIResult = await res.json();
       onResult(data);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "エラーが発生しました");
+      setError(friendlyError(e));
     } finally {
       setLoading(false);
     }
@@ -189,8 +206,8 @@ function RegisterSection({ result }: { result: DIResult }) {
           placeholder={address}
         />
       </div>
-      {error && <p className="error">{error.message}</p>}
-      {isSuccess && <p className="success">NFT 登録トランザクション送信済み</p>}
+      {error && <p className="error">{friendlyError(error)}</p>}
+      {isSuccess && <p className="success">トランザクションを送信しました。Etherscan で確認できます</p>}
       <button type="submit" disabled={isPending}>
         {isPending ? "送信中..." : `${result.text} を登録`}
       </button>
