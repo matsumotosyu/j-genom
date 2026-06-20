@@ -205,7 +205,7 @@ export default function App() {
     <div className="app">
       <header>
         <h1>J-Genom</h1>
-        <p className="subtitle">文字と読みの乖離を刻む</p>
+        <p className="subtitle">じゅげむ - 文字と読みの乖離を刻む</p>
         <WalletSection />
       </header>
 
